@@ -1,0 +1,1 @@
+# Palworld-MCP-Server-Discord-Bot
