@@ -1,15 +1,19 @@
 #!/bin/bash
 
-# Variables
-SERVICE_NAME="palworldserver.service"
+# Set variables
+INSTALL_DIR="/home/steam/Steam/steamapps/common/PalServer"
+APP_ID="2394010"
+PALSERVER_SERVICE="palworldserver.service"  # Adjust if using a systemd service
 
 echo "Stopping Palworld server..."
-sudo systemctl stop "$SERVICE_NAME"
+sudo systemctl stop "$PALSERVER_SERVICE"
 
-echo "Waiting a few seconds to ensure shutdown..."
-sleep 5
+echo "Updating Palworld server..."
+/usr/games/steamcmd +login anonymous +force_install_dir "$INSTALL_DIR" +app_upd>
 
-echo "Starting Palworld server..."
-sudo systemctl start "$SERVICE_NAME"
+echo "Update complete. Restarting server..."
+sudo systemctl start "$PALSERVER_SERVICE"
 
-echo "Palworld server restarted successfully!"
+echo "Palworld server is now running with the latest update!"
+
+
